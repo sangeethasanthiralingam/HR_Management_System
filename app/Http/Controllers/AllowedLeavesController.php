@@ -14,6 +14,7 @@ class AllowedLeavesController extends Controller
      */
     public function getAllAllowedLeaves(Request $request)
     {
+        //jjj
         try {
             $allowedleaves = DB::table('allowed_leaves as l')
            ->select('l.id','p.id as position','t.id as type','l.term','l.count')
