@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('attendence_adjusments', function (Blueprint $table) {
             $table->id();
-            $table->string('bio_code');
-            $table->foreign('bio_code')->references('bio_code')->on('employees')->onDelete('cascade');
+           
             $table->date('date');
-            $table->string('adjusteds');
+            $table->datetime('start_time');
+            $table->datetime('end_time');
             $table->string('remark');
             $table->string('added_by');
             $table->string('updated_by');
-            $table->date('added_date');
+
             $table->timestamps();
         });
     }

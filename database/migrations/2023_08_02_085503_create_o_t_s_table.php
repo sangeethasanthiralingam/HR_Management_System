@@ -13,20 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('attendances', function (Blueprint $table) {
+        Schema::create('o_t_s', function (Blueprint $table) {
             $table->id();
-            
-            $table->date('date');
-            $table->datetime('start_time');
-            $table->datetime('end_time');
-            $table->decimal('worked_hrs');
-            $table->decimal('work_shift_tot_hrs');
-            $table->string('status');
-
-
-
-           
-
+            $table->decimal('etf');
+            $table->bigInteger('employee')->unsigned()->nullable();
+            $table->foreign('employee')->references('id')->on('employees')->onDelete('set null');
+            $table->datetime('ot_hour');
+            $table->decimal('hour_payment');
+            $table->decimal('total');
             $table->timestamps();
         });
     }
@@ -38,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attendances');
+        Schema::dropIfExists('o_t_s');
     }
 };
