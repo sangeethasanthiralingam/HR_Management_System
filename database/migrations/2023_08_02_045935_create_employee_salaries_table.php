@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('status');
             $table->decimel(salary_amount);
             $table->date('date');
-            $table->timestamps();
+            $table->timestamps();//ww
         });
     }
 
