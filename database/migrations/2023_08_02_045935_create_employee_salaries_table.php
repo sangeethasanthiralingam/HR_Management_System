@@ -17,7 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('bio_code');
             $table->foreign('bio_code')->references('bio_code')->on('employees')->onDelete('cascade');
-            $
+            $table->biginteger('employee_id');
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('setnull');
+            $table->decimel('epf');
+            $table->decimel('etf');
+            $table->string('status');
+            $table->decimel(salary_amount);
             $table->date('date');
             $table->timestamps();
         });
