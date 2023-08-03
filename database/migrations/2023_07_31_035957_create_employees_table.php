@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('bio_code')->unique();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('dob_date');
+             $table->date('dob_date');
             $table->string('gender');
             $table->string('mobile');
             $table->string('alternative_phone');

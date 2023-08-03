@@ -88,8 +88,8 @@ class SalaryAdvanceController extends Controller
 
         try {
             $salary_advances = DB::table('salary_advances as sad')
-                ->select('sad.id', 'sad.bio_code', 'sad.type', 'sad.from_date', 'sad.to_date', 'sad.description')
-                ->leftJoin('employees', 'sad.bio_code', '=', 'employees.bio_code');
+                ->select('sad.id', 'e.first_name as sad.employee', 'sad.type', 'sad.from_date', 'sad.to_date', 'sad.description')
+                ->leftJoin('employees as e', 'e.id', '=', 'sad.employee');
 
             $search = $request->search;
 
@@ -97,7 +97,7 @@ class SalaryAdvanceController extends Controller
                 $salary_advances = $salary_advances
                     ->where('sad.id', 'LIKE', '%' . $search . '%')
                     ->orWhere('sad.type', 'LIKE', '%' . $search . '%')
-                    ->orWhere('sad.bio_code', 'LIKE', '%' . $search . '%');
+                    ->orWhere('sad.employee', 'LIKE', '%' . $search . '%');
             }
             $salary_advances = $salary_advances->orderBy('sad.id')->get();
 
