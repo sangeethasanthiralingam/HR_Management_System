@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('salary_advances', function (Blueprint $table) {
             $table->id();
-            $table->string('bio_code');
+            $table->bigInteger('employee')->unsigned()->index()->nullable();;
+            $table->foreign('employee')->references('id')->on('employees')->onDelete('set null');
             $table->decimal('amount_per_month', 8, 2);
             $table->string('type');
             $table->date('from_date');
@@ -23,7 +24,6 @@ return new class extends Migration
             $table->string('description');
             $table->timestamps();
     
-            $table->foreign('bio_code')->references('bio_code')->on('employees')->onDelete('cascade');
         });
     }
     
