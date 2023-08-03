@@ -88,8 +88,8 @@ class SalaryAdvanceController extends Controller
 
         try {
             $salary_advances = DB::table('salary_advances as sad')
-                ->select('sad.id', 'e.first_name as sad.employee', 'sad.type', 'sad.from_date', 'sad.to_date', 'sad.description')
-                ->leftJoin('employees as e', 'e.id', '=', 'sad.employee');
+                ->select('sad.id', 'e.first_name as employee', 'sad.type', 'sad.from_date', 'sad.to_date','sad.amount_per_month','sad.description')
+                ->leftJoin('employees as e', 'e.id', '=', 'employee');
 
             $search = $request->search;
 
@@ -112,6 +112,111 @@ class SalaryAdvanceController extends Controller
             ], 500);
         }
     }
+    public function getSalaryAdavanceInfo($id)
+    {
+        try {
+
+            $salary_advances = DB::table('salary_advances as sad')
+            ->select('sad.id', 'e.first_name as employee', 'sad.type', 'sad.from_date', 'sad.to_date','sad.amount_per_month', 'sad.description')
+            ->leftJoin('employees as e', 'e.id', '=', 'employee')
+                ->where('sad.id', $id)
+                ->first();
+
+            return response()->json([
+                "message" => "salary_advances Data",
+                "data" => $salary_advances,
+            ], 200);
+        } catch (\Throwable $e) {
+            return response()->json([
+                "message" => "oops something went wrong",
+                "error" => $e->getMessage(),
+            ], 500);
+        }
+    }
     
-    
+    public function saveSalaryAdvance(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $request->validate([
+                'employee' => 'required',
+                'amount_per_month' => 'required',
+                'type' => 'required',
+                'from_date' => 'required',
+                'to_date' => 'required',
+                'description' => 'required'
+            ]);
+
+            $salary_advances = new SalaryAdvance();
+            $salary_advances->employee = $request->employee;
+            $salary_advances->amount_per_month = $request->amount_per_month;
+            $salary_advances->type = $request->type;
+            $salary_advances->from_date = $request->from_date;
+            $salary_advances->to_date = $request->to_date;
+            $salary_advances->description = $request->description;
+            $salary_advances->save();
+
+            DB::commit();
+
+            return response()->json([
+                "msg" => "salary_advances Data",
+                "data" => $salary_advances,
+            ], 201);
+        } catch (\Throwable $e) {
+            DB::rollback();
+            return response()->json([
+                "msg" => "oops something went wrong",
+                "error" => $e->getMessage(),
+            ], 500);
+        }
+    }
+    public function updateSalaryAdvance(Request $request, $id)
+    {
+        DB::beginTransaction();
+        try {
+            $request->validate([
+                'employee' => 'required',
+                'amount_per_month' => 'required',
+                'type' => 'required',
+                'from_date' => 'required',
+                'to_date' => 'required',
+                'description' => 'required'
+            ]);
+
+            $salary_advances = SalaryAdvance::find($id);
+            $salary_advances->employee = $request->employee;
+            $salary_advances->amount_per_month = $request->amount_per_month;
+            $salary_advances->type = $request->type;
+            $salary_advances->from_date = $request->from_date;
+            $salary_advances->to_date = $request->to_date;
+            $salary_advances->description = $request->description;
+            $salary_advances->save();
+
+            DB::commit();
+
+            return response()->json([
+                "msg" => "salary_advances Data",
+                "data" => $salary_advances,
+            ], 201);
+        } catch (\Throwable $e) {
+            DB::rollback();
+            return response()->json([
+                "msg" => "oops something went wrong",
+                "error" => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+    public function destroySalaryAdvance($id)
+    {
+        try {
+            $salary_advances = SalaryAdvance::find($id);
+            $salary_advances->delete();
+        } catch (\Throwable $e) {
+            return response()->json([
+                "message" => "Ooops Something went wrong please try again",
+                "error" => $e->getMessage(),
+            ], 500);
+        }
+    }
 }
