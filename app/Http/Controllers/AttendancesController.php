@@ -82,7 +82,7 @@ class AttendancesController extends Controller
     {
         //
     }
-          /**************************API functions**********************************/
+/*************************************API functions************************************************************************/
 
 
           public function  getAllAttendance (Request $request){

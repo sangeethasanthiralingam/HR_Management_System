@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AttendenceAdjusments;
+use App\Models\RecruitmentCanditates;
 use Illuminate\Http\Request;
-use DB;
-class AttendenceAdjusmentsController extends Controller
+
+class RecruitmentCanditatesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class AttendenceAdjusmentsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\AttendenceAdjusments  $attendenceAdjusments
+     * @param  \App\Models\RecruitmentCanditates  $recruitmentCanditates
      * @return \Illuminate\Http\Response
      */
-    public function show(AttendenceAdjusments $attendenceAdjusments)
+    public function show(RecruitmentCanditates $recruitmentCanditates)
     {
         //
     }
@@ -52,10 +52,10 @@ class AttendenceAdjusmentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\AttendenceAdjusments  $attendenceAdjusments
+     * @param  \App\Models\RecruitmentCanditates  $recruitmentCanditates
      * @return \Illuminate\Http\Response
      */
-    public function edit(AttendenceAdjusments $attendenceAdjusments)
+    public function edit(RecruitmentCanditates $recruitmentCanditates)
     {
         //
     }
@@ -64,10 +64,10 @@ class AttendenceAdjusmentsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\AttendenceAdjusments  $attendenceAdjusments
+     * @param  \App\Models\RecruitmentCanditates  $recruitmentCanditates
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AttendenceAdjusments $attendenceAdjusments)
+    public function update(Request $request, RecruitmentCanditates $recruitmentCanditates)
     {
         //
     }
@@ -75,10 +75,10 @@ class AttendenceAdjusmentsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\AttendenceAdjusments  $attendenceAdjusments
+     * @param  \App\Models\RecruitmentCanditates  $recruitmentCanditates
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AttendenceAdjusments $attendenceAdjusments)
+    public function destroy(RecruitmentCanditates $recruitmentCanditates)
     {
         //
     }

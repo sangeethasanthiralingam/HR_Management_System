@@ -15,7 +15,7 @@ use App\Http\Controllers\LeaveRequestController;
 use App\Http\Controllers\ShortLeaveController;
 use App\Http\Controllers\SalaryAdvanceController;
 use App\Http\Controllers\AttendancesController;
-
+use App\Http\Controllers\AttendenceAdjusmentsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -109,3 +109,9 @@ Route::get('/attendance/{id}', [AttendancesController::class, 'getAttendanceinfo
 Route::post('/attendance', [AttendancesController::class, 'saveAttendance']);
 Route::put('/attendance/{id}', [AttendancesController::class, 'updateAttendance']);
 Route::delete('/attendance/{id}', [AttendancesController::class, 'destroyAttendance']);
+
+Route::get('/attendenceadjusments', [AttendenceAdjusmentsController::class, 'getAllattendenceadjusments']);
+Route::get('/attendenceadjusments/{id}', [AttendenceAdjusmentsController::class, 'getattendenceadjusments']);
+Route::post('/attendenceadjusments', [AttendenceAdjusmentsController::class, 'saveAttendance']);
+Route::put('/attendenceadjusments/{id}', [AttendenceAdjusmentsController::class, 'updateAttendance']);
+Route::delete('/attendenceadjusments/{id}', [AttendenceAdjusmentsController::class, 'destroyAttendance']);

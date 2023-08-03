@@ -13,16 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('resignations', function (Blueprint $table) {
+        Schema::create('instructors', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('employee')->unsigned()->nullable();
             $table->foreign('employee')->references('id')->on('employees')->onDelete('set null');
-           
-            $table->decimal('gratuity');
-            $table->string('type');
-            $table->string('reason');
-            $table->string('resign_status');
-            $table->date('resigned_date');
+            $table->bigInteger('department')->unsigned()->nullable();
+            $table->foreign('department')->references('id')->on('departments')->onDelete('set null');  
             $table->timestamps();
         });
     }
@@ -34,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resignations');
+        Schema::dropIfExists('instructors');
     }
 };
