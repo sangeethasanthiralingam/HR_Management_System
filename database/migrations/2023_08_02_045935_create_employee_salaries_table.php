@@ -18,13 +18,12 @@ return new class extends Migration
            
             $table->bigInteger('employee_id')->unsigned()->nullable();
             $table->foreign('employee_id')->references('id')->on('employees')->onDelete('set null');
-            $table->decimal('epf', 10, 2); // The 'decimal' method takes precision and scale as arguments.
-            $table->decimal('etf', 10, 2); // Here, I assumed a precision of 10 and scale of 2. You can adjust as needed.
+           
             $table->string('status');
             $table->decimal('salary_amount', 10, 2);
-            $table->unsignedBigInteger('added_by');
+            $table->BigInteger('added_by')->unsigned()->nullable();;
             $table->foreign('added_by')->references('id')->on('users')->onDelete('set null');
-            $table->unsignedBigInteger('approved_by');
+            $table->BigInteger('approved_by')->unsigned()->nullable();;
             $table->foreign('approved_by')->references('id')->on('users')->onDelete('set null');
             $table->date('date');
             $table->timestamps();
