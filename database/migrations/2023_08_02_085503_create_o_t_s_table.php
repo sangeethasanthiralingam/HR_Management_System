@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('o_t_s', function (Blueprint $table) {
             $table->id();
-            $table->decimal('etf');
+            
             $table->bigInteger('employee')->unsigned()->nullable();
             $table->foreign('employee')->references('id')->on('employees')->onDelete('set null');
             $table->datetime('ot_hour');
