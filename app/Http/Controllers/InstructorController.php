@@ -125,7 +125,7 @@ class InstructorController extends Controller
         
         ]);
         $instructor = Instructor::find($id);
-        //$instructor = new Instructor();
+       
         $instructor->employee = $request->employee;
         $instructor->department = $request->department;
       
