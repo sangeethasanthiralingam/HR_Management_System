@@ -61,10 +61,10 @@ Route::put ('/departments/{id}', [DepartmentController::class, 'updateDepartment
 Route::delete ('/departments/{id}', [DepartmentController::class, 'destroyDepartment']);
 
 Route::get ('/employees', [EmployeesController::class, 'getAllEmployees']);
-Route::get ('/employees/{id}', [EmployeesController::class, 'getEmployees']);
-Route::POST('/employees', [EmployeesController::class, 'saveEmployees']);
-Route::put ('/employees/{id}', [EmployeesController::class, 'updateEmployees']);
-Route::delete ('/employees/{id}', [EmployeesController::class, 'destroyEmployees']);
+Route::get ('/employees/{id}', [EmployeesController::class, 'getEmployeeInfo']);
+Route::POST('/employees', [EmployeesController::class, 'saveEmployee']);
+Route::put ('/employees/{id}', [EmployeesController::class, 'updateEmployee']);
+Route::delete ('/employees/{id}', [EmployeesController::class, 'destroyEmployee']);
 
 Route::get ('/announcement', [AnnouncementController::class, 'getAllAnnouncement']);
 Route::get ('/announcement/{id}', [AnnouncementController::class, 'getAnnouncement']);

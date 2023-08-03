@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employees;
 use Illuminate\Http\Request;
-use App\Models\EmployeeQualifications;
+use App\Models\Employee_qualification;
 use DB;
 
 class EmployeesController extends Controller
@@ -231,7 +231,7 @@ class EmployeesController extends Controller
 
             $qualification = $request->qualification;
             foreach($qualification as $qualification){
-                $com = new EmployeeQualifications();
+                $com = new Employee_qualification();
                 $com->employee = $employee->id;
                 $com->qualification = $qualification;
                 $com->save();
@@ -287,12 +287,12 @@ class EmployeesController extends Controller
           $employee->status = $request->input('status');
           $employee->save();    
 
-        EmployeeQualifications::where('employee',$id)->delete();
+          Employee_qualification::where('employee',$id)->delete();
 
         $qualification = $request->qualification;
         if(!is_null($qualification)){
         foreach($qualification as $qualification){
-            $com = new EmployeeQualifications();
+            $com = new Employee_qualification();
             $com->employee = $employee->id;
             $com->qualification = $qualification;
             $com->save();
@@ -313,5 +313,19 @@ class EmployeesController extends Controller
       ],500);
   }
       }
+
+      public function destroyEmployee($id)
+    {
+        try {
+            $department = Employees::find($id);
+            $department->delete();
+
+        } catch (\Throwable $e) {
+            return response()->json([
+                "message" => "Ooops Something went wrong please try again",
+                "error" => $e->getMessage(),
+            ], 500);
+        }
+    }
       
   } 

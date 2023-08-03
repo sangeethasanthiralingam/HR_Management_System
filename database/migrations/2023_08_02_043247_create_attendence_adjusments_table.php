@@ -20,8 +20,11 @@ return new class extends Migration
             $table->datetime('start_time');
             $table->datetime('end_time');
             $table->string('remark');
-            $table->string('added_by');
-            $table->string('updated_by');
+            $table->bigInteger('added_by')->unsigned()->index()->nullable();
+            $table->foreign('added_by')->references('id')->on('users')->onDelete('set null');
+
+            $table->bigInteger('updated_by')->unsigned()->index()->nullable();
+            $table->foreign('updated_by')->references('id')->on('users')->onDelete('set null');
 
             $table->timestamps();
         });
