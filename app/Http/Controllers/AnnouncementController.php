@@ -178,7 +178,7 @@ class AnnouncementController extends Controller
                 'title'=>'required',
             ]);
             $announcements = Announcement::find($id);
-            $announcements = new Announcement();
+           
             $announcements->date = $request->date;
             $announcements->attachment = $request->attachment;
             $announcements->description = $request->description;

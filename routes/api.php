@@ -16,6 +16,9 @@ use App\Http\Controllers\ShortLeaveController;
 use App\Http\Controllers\SalaryAdvanceController;
 use App\Http\Controllers\AttendancesController;
 use App\Http\Controllers\AttendenceAdjusmentsController;
+use App\Http\Controllers\RecruitmentCanditatesController;
+use App\Http\Controllers\InstructorController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -115,3 +118,18 @@ Route::get('/attendenceadjusments/{id}', [AttendenceAdjusmentsController::class,
 Route::post('/attendenceadjusments', [AttendenceAdjusmentsController::class, 'saveAttendance']);
 Route::put('/attendenceadjusments/{id}', [AttendenceAdjusmentsController::class, 'updateAttendance']);
 Route::delete('/attendenceadjusments/{id}', [AttendenceAdjusmentsController::class, 'destroyAttendance']);
+
+Route::get ('/re', [RecruitmentCanditatesController::class, 'index']);
+
+Route::get ('/recruitmentcandidates', [RecruitmentCanditatesController::class, 'getAllRecruitmentCandidates']);
+Route::get ('/recruitmentcandidates/{id}', [RecruitmentCandidatesController::class, 'getRecruitmentCandidateInfo']);
+Route::POST('/recruitmentcandidates', [RecruitmentCandidatesController::class, 'saveRecruitmentCandidates']);
+Route::put ('/recruitmentcandidates/{id}', [RecruitmentCandidatesController::class, 'updateRecruitmentCandidates']);
+Route::delete ('/recruitmentcandidates/{id}', [RecruitmentCandidatesController::class, 'destroyRecruitmentCandidate']);
+
+Route::get('/instructorController', [InstructorController::class, 'getAllInstructorController']);
+Route::get('/instructorController/{id}', [InstructorController::class, 'getInstructorController']);
+Route::post('/instructorController', [InstructorController::class, 'saveInstructorController']);
+Route::put('/instructorController/{id}', [InstructorController::class, 'updateInstructorController']);
+Route::delete('/instructorController/{id}', [InstructorController::class, 'destroyInstructorController']);
+

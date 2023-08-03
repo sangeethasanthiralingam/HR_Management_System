@@ -124,7 +124,6 @@ class LeaveTypesController extends Controller
         ]);
         $leavetypes = LeaveTypes::find($id);
 
-        $leavetypes = new LeaveTypes();
         $leavetypes->name = $request->name;
         $leavetypes->is_no_pay = $request->is_no_pay;
         $leavetypes->description = $request->description;

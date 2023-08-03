@@ -121,7 +121,6 @@ class AllowedLeavesController extends Controller
             ]);
             $allowedleaves = AllowedLeaves::find($id);
 
-            $allowedleaves = new AllowedLeaves();
             $allowedleaves->position = $request->position;
             $allowedleaves->type = $request->type;
             $allowedleaves->term = $request->term;

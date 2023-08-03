@@ -84,7 +84,7 @@ class SalaryAdvanceController extends Controller
     }
 
     public function getAllSalaryAdvances(Request $request)
-    {
+    { 
 
         try {
             $salary_advances = DB::table('salary_advances as sad')

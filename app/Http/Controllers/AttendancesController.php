@@ -197,8 +197,8 @@ class AttendancesController extends Controller
                  'work_shift_tot_hrs'=>'required',
                  'status'=>'required'
              ]);
- 
-             $attendances = new Attendances();
+             $attendances = Attendances::find($id);
+
              $attendances->employee = $request->employee;
              $attendances->date = $request->date;
              $attendances->start_time = $request->start_time;
