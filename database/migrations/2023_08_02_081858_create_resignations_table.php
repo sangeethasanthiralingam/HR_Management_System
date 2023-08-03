@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('resignations', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('employee_id')->unsigned()->nullable();
-            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('set null');
+            $table->bigInteger('employee')->unsigned()->nullable();
+            $table->foreign('employee')->references('id')->on('employees')->onDelete('set null');
             $table->bigInteger('position')->unsigned()->index()->nullable();
             $table->foreign('position')->references('id')->on('positions')->onDelete('set null');
             $table->decimal('gratuity');
