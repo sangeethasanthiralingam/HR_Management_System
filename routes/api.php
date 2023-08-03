@@ -14,6 +14,8 @@ use App\Http\Controllers\AllowedLeavesController;
 use App\Http\Controllers\LeaveRequestController;
 use App\Http\Controllers\ShortLeaveController;
 use App\Http\Controllers\SalaryAdvanceController;
+use App\Http\Controllers\AttendancesController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -101,3 +103,9 @@ Route::get('/salaryadvance/{id}', [SalaryAdvanceController::class, 'getSalaryAda
 Route::post('/salaryadvance', [SalaryAdvanceController::class, 'saveSalaryAdvance']);
 Route::put('/salaryadvance/{id}', [SalaryAdvanceController::class, 'updateSalaryAdvance']);
 Route::delete('/salaryadvance/{id}', [SalaryAdvanceController::class, 'destroySalaryAdvance']);
+
+Route::get('/attendance', [AttendancesController::class, 'getAllAttendance']);
+Route::get('/attendance/{id}', [AttendancesController::class, 'getAttendanceinfo']);
+Route::post('/attendance', [AttendancesController::class, 'saveAttendance']);
+Route::put('/attendance/{id}', [AttendancesController::class, 'updateAttendance']);
+Route::delete('/attendance/{id}', [AttendancesController::class, 'destroyAttendance']);

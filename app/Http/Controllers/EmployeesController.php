@@ -317,8 +317,8 @@ class EmployeesController extends Controller
       public function destroyEmployee($id)
     {
         try {
-            $department = Employees::find($id);
-            $department->delete();
+            $employee = Employees::find($id);
+            $employee->delete();
 
         } catch (\Throwable $e) {
             return response()->json([
