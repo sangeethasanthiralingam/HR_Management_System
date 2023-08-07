@@ -18,7 +18,8 @@ use App\Http\Controllers\AttendancesController;
 use App\Http\Controllers\AttendenceAdjusmentsController;
 use App\Http\Controllers\RecruitmentCanditatesController;
 use App\Http\Controllers\InstructorController;
-
+use App\Http\Controllers\OTController;
+use App\Http\Controllers\EmployeeBenefitsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -132,4 +133,18 @@ Route::get('/instructorController/{id}', [InstructorController::class, 'getInstr
 Route::post('/instructorController', [InstructorController::class, 'saveInstructorController']);
 Route::put('/instructorController/{id}', [InstructorController::class, 'updateInstructorController']);
 Route::delete('/instructorController/{id}', [InstructorController::class, 'destroyInstructorController']);
+
+Route::get('/ot', [OTController::class, 'getAllot']);
+Route::get('/ot/{id}', [OTController::class, 'getot']);
+Route::post('/ot', [OTController::class, 'saveot']);
+Route::put('/ot/{id}', [OTController::class, 'updateot']);
+Route::delete('/ot/{id}', [OTController::class, 'destroyot']);
+
+Route::get('/EB', [EmployeeBenefitsController::class, 'index']);
+Route::get('/EB/{id}', [EmployeeBenefitsController::class, 'edit']);
+Route::post('/EB', [EmployeeBenefitsController::class, 'store']);
+Route::put('/EB/{id}', [EmployeeBenefitsController::class, 'update']);
+Route::delete('/EB/{id}', [EmployeeBenefitsController::class, 'destroy']);
+
+
 
